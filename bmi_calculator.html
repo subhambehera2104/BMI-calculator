@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BMI calculator</title>
+	<style>
+		#message_1{
+			color: green;
+			font-size: 25px;
+		}
+		#message_2{
+			color: orange;
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+	<input type="number" name="weight" placeholder="Enter your weight in KG" id="weight">
+	<input type="number" name="height" placeholder="Enter your height in CM" id="height"><br>
+	<input type="button" value="Check BMI" onclick="checkbmi()"><br>
+	<div id="result"></div>
+</body>
+<script>
+	function checkbmi() {
+		var weight = parseFloat(document.getElementById('weight').value);
+		var height = parseFloat(document.getElementById('height').value);
+		var bmi = weight/(height * height);
+
+		var bmiMessage = " ";
+		if (bmi <= 18.5) {
+			bmiMessage = "Your BMI is within the underweight range.";
+		}else if (bmi >= 18.5 && bmi <= 24.9) {
+			bmiMessage = "Your BMI is normal weight range.";
+		}else if (bmi >= 25 && bmi <= 29.9) {
+			bmiMessage = "Your BMI is overrange weight.";
+		}else if (bmi > 29.9) {
+			bmiMessage = "Obesity";
+		}else {
+			bmiMessage = "Invalid input";
+		}
+		document.getElementById('result').innerHTML= "Your BMI is " + bmi.toFixed(2) + "<br>" + bmiMessage;
+	}
+</script>
+</html>
